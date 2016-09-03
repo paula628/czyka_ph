@@ -1,0 +1,1 @@
+ <input type="button" value="Yes" onclick="location.href ='{% url 'core:main' employee.id %}'"/>

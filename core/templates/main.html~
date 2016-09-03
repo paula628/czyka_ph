@@ -1,0 +1,92 @@
+{% load i18n %}
+{% load url from future %}
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>CZYKA</title>
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Montserrat">
+	<link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Satisfy">
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+		body {
+			font-family: 'Montserrat', serif;
+			text-align: center;
+			background-color: #29241D;
+		}
+
+		.main p { 
+			font-family: 'Satisfy', serif;
+			font-size: 52px;
+			font-weight: bold;
+			margin-bottom: 40px;
+		 }
+
+		p { 
+			font-family: 'Satisfy', serif;
+			font-size: 40px;
+			font-weight: bold;
+			background-color: #29241D;
+		 }
+		
+		br {
+        	line-height: 250%;
+     	}
+		.main {
+			background-color: #29241D;
+			text-align: center;
+			font-size: 20px;
+			margin-top: 120px;
+			color: white;
+			height: 300px;
+			margin-left: auto ;
+  			margin-right: auto ;
+			width: 700px;
+		}
+
+    </style>
+  </head>
+  <body>
+<div class="row">
+	 <div class="col-6 col-m-9">
+		
+		<div class='main'>
+			<div class="col-sm-12"><p>Tell Me Your Story.</p></div>
+		 
+		<form method="POST" action="{% url 'core:main' %}">
+		  {% csrf_token %}
+			<div class="col-sm-2"></div>
+			<div class="col-sm-8">
+				<div class="col-sm-12">
+					<input class="form-control" id="name" name="name" style="color:black;" type='text' placeholder="Name" maxlength="30">
+				</div>
+					<br/>
+				<div class="col-sm-12">
+					<input id="email" class="form-control" name="email" style="color:black;" type='text' placeholder="Email" maxlength="30">
+				</div>
+					<br/>
+				<div class="col-sm-12">
+					<input type="submit" class="btn btn-md btn-default">
+				</div>
+			</div>
+			<div class="col-sm-2"></div>
+		</form>
+		</div> <!-- main -->
+	</div>
+
+		<div class="col-6 col-m-9">
+			{% if submit %}
+				<p>Thank you!</p>
+			{% endif %}
+		</div>
+</div>
+
+  </body>
+</html>
+
+
